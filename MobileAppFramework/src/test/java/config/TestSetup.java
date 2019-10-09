@@ -132,7 +132,7 @@ public class TestSetup {
 			caps.setCapability(MobileCapabilityType.DEVICE_NAME, Utilities.getProperty("DEVICE_NAME"));
 			caps.setCapability(MobileCapabilityType.PLATFORM_NAME, "Android");
 			caps.setCapability(MobileCapabilityType.PLATFORM_VERSION, Utilities.getProperty("DEVICE_PLATFORM_VERSION"));
-			caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator2");
+			caps.setCapability(MobileCapabilityType.AUTOMATION_NAME, "UiAutomator1");
 			caps.setCapability(MobileCapabilityType.APP, appInTest.getAbsolutePath());
 			
 			localDriver = new AndroidDriver<AndroidElement>(new URL("http://127.0.0.1:4723/wd/hub"), caps);

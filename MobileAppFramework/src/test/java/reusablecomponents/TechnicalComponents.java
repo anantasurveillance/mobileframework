@@ -40,6 +40,20 @@ public class TechnicalComponents extends TestSetup {
 					"Exception occured while waiting for defined time limit :" + time + " Seconds");
 		}
 	}
+	
+	/**
+	 * Function to hide keyboard.
+	 */	
+	public static void hideKeyboard() {
+		try {
+			driver.hideKeyboard();
+			Report.log("Keyboard is hidden successfully.");
+			
+		} catch (Exception e) {
+			throw new FrameworkException(
+					"Exception occured while hiding keyboard on screen");
+		}
+	}
 		
 	/**
 	 * Function to wait for any element to be visbile, invisible or enable.
@@ -80,7 +94,7 @@ public class TechnicalComponents extends TestSetup {
 			}
 		} catch (TimeoutException e) {
 			throw new FrameworkException(
-					"Element : *  '" + element.toString() + "' not found within defined time limit.");
+					"Element state: *  '"+state + element.toString() + "' not found within defined time limit.");
 		} catch (NoSuchElementException e) {
 			throw new FrameworkException("Element : *  '" + element.toString() + "' not found in DOM.");
 		} catch (Exception e) {
@@ -130,14 +144,14 @@ public class TechnicalComponents extends TestSetup {
 			if (element.isDisplayed()) {
 				if (element.isEnabled()) {
 					element.click();
-					Report.log("Element : " + desc + " is Clicked.");
+					Report.log("Element : " + element.toString() + " is Clicked.");
 				} else
-					throw new FrameworkException("Element : " + desc + " is appears but Disabled.");
+					throw new FrameworkException("Element : " +  element.toString() + " is appears but Disabled.");
 			} else
-				throw new FrameworkException("Element : " + desc + " is not Displayed.");
+				throw new FrameworkException("Element : " +  element.toString() + " is not Displayed.");
 
 		} catch (Exception e) {
-			throw new FrameworkException("Unknown exception occured while clicking: " + desc + "---" + e.getClass()
+			throw new FrameworkException("Unknown exception occured while clicking: " +  element.toString() + "---" + e.getClass()
 					+ "---" + e.getMessage());
 		}
 	}
@@ -152,15 +166,15 @@ public class TechnicalComponents extends TestSetup {
 			if (element.isDisplayed()) {
 				if (element.isEnabled()) {
 					touch.tap(tapOptions().withElement(element(element))).perform();
-					Report.log("Element : " + desc + " is Tapped.");
+					Report.log("Element : " +  element.toString() + " is Tapped.");
 				} else
-					throw new FrameworkException("Element : " + desc + " is appears but Disabled.");
+					throw new FrameworkException("Element : " +  element.toString() + " is appears but Disabled.");
 			} else
-				throw new FrameworkException("Element : " + desc + " is not Displayed.");
+				throw new FrameworkException("Element : " +  element.toString() + " is not Displayed.");
 
 		} catch (Exception e) {
 			throw new FrameworkException(
-					"Unknown exception occured while tapping: " + desc + "---" + e.getClass() + "---" + e.getMessage());
+					"Unknown exception occured while tapping: " +  element.toString() + "---" + e.getClass() + "---" + e.getMessage());
 		}
 	}
 
@@ -175,14 +189,14 @@ public class TechnicalComponents extends TestSetup {
 				if (element.isEnabled()) {
 					touch.longPress(longPressOptions().withElement(element(element)).withDuration(ofSeconds(duration)))
 							.release().perform();
-					Report.log("Element : " + desc + " is Long Tapped.");
+					Report.log("Element : " +  element.toString() + " is Long Tapped.");
 				} else
-					throw new FrameworkException("Element : " + desc + " is appears but Disabled.");
+					throw new FrameworkException("Element : " +  element.toString() + " is appears but Disabled.");
 			} else
-				throw new FrameworkException("Element : " + desc + " is not Displayed.");
+				throw new FrameworkException("Element : " +  element.toString() + " is not Displayed.");
 
 		} catch (Exception e) {
-			throw new FrameworkException("Unknown exception occured while Long tapping: " + desc + "---" + e.getClass()
+			throw new FrameworkException("Unknown exception occured while Long tapping: " +  element.toString() + "---" + e.getClass()
 					+ "---" + e.getMessage());
 		}
 	}
@@ -198,7 +212,7 @@ public class TechnicalComponents extends TestSetup {
 				if (startPoint.isEnabled()) {
 					touch.longPress(longPressOptions().withElement(element(startPoint)).withDuration(ofSeconds(2)))
 							.moveTo(element(endPoint)).release().perform();
-					Report.log("Successfully swiped on screen");
+					Report.log("Successfully swiped on screen" + startPoint.toString());
 				} else
 					throw new FrameworkException("Element : " + startPoint.toString() + " is appears but Disabled.");
 			} else
@@ -206,7 +220,7 @@ public class TechnicalComponents extends TestSetup {
 
 		} catch (Exception e) {
 			throw new FrameworkException(
-					"Unknown exception occured while swiping" + desc + "---" + e.getClass() + "---" + e.getMessage());
+					"Unknown exception occured while swiping" + startPoint.toString() + "---" + e.getClass() + "---" + e.getMessage());
 		}
 	}
 	
@@ -220,7 +234,7 @@ public class TechnicalComponents extends TestSetup {
 			if (dragElement.isDisplayed()) {
 				if (dragElement.isEnabled()) {
 					touch.longPress(element(dragElement)).moveTo(element(dropElement)).release().perform();
-					Report.log("Successfully Drag and Drop Element");
+					Report.log("Successfully Drag and Drop Element : " +dragElement.toString());
 				} else
 					throw new FrameworkException("Element : " + dragElement.toString() + " is appears but Disabled.");
 			} else
@@ -228,7 +242,7 @@ public class TechnicalComponents extends TestSetup {
 
 		} catch (Exception e) {
 			throw new FrameworkException(
-					"Unknown exception occured while swiping" + desc + "---" + e.getClass() + "---" + e.getMessage());
+					"Unknown exception occured while swiping" + dragElement.toString() + "---" + e.getClass() + "---" + e.getMessage());
 		}
 	}
 
@@ -240,6 +254,7 @@ public class TechnicalComponents extends TestSetup {
 			
 			String args = attribute + "(\"" + value + "\")";
 			WebElement androidElement = driver.findElementByAndroidUIAutomator(args);
+			Report.log("framed AndroidUIAutomator : " + androidElement.toString());
 			return androidElement;
 			
 		} catch (Exception e) {
@@ -257,7 +272,8 @@ public class TechnicalComponents extends TestSetup {
 			if (element.isDisplayed()) {
 				if (element.isEnabled()) {
 					element.sendKeys(text);
-					Report.log(desc + " successfully typed");
+					hideKeyboard();
+					Report.log(desc + " successfully typed: " + text);
 				} else
 					throw new FrameworkException("Element : " + element.toString() + " is appears but Disabled.");
 			} else
@@ -265,8 +281,8 @@ public class TechnicalComponents extends TestSetup {
 
 		} catch (Exception e) {
 			throw new FrameworkException(
-					"Unknown exception occured while Typing :" + desc + "---" + e.getClass() + "---" + e.getMessage());
+					"Unknown exception occured while Typing :" + element.toString() + "---" + e.getClass() + "---" + e.getMessage());
 		}
 	}
-	
+
 }
