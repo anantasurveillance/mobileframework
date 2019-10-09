@@ -1,0 +1,236 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" total="5" passed="5">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="149216" started-at="2019-10-09T11:27:48Z" finished-at="2019-10-09T11:30:18Z">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="149216" started-at="2019-10-09T11:27:48Z" finished-at="2019-10-09T11:30:18Z">
+      <class name="practice.testscript.AdvanceTest">
+        <test-method status="PASS" signature="beforeSuite()[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="beforeSuite" is-config="true" duration-ms="1335" started-at="2019-10-09T16:57:47Z" finished-at="2019-10-09T16:57:48Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeSuite -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="beforeMethod" is-config="true" duration-ms="20016" started-at="2019-10-09T16:57:49Z" finished-at="2019-10-09T16:58:09Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void practice.testscript.AdvanceTest.testNavigatePreferenceToWiFi(java.lang.String,java.lang.String,java.lang.String)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="testNavigatePreferenceToWiFi(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="testNavigatePreferenceToWiFi" duration-ms="8256" started-at="2019-10-09T16:58:09Z" data-provider="testNavigatePreferenceToWiFi" finished-at="2019-10-09T16:58:17Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Verify WiFi setting navigation functionality and enter 'Hello Shailendra']]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Low]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Hello Shailendra]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNavigatePreferenceToWiFi -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="afterMethod" is-config="true" duration-ms="1284" started-at="2019-10-09T16:58:17Z" finished-at="2019-10-09T16:58:18Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testNavigatePreferenceToWiFi status=SUCCESS method=AdvanceTest.testNavigatePreferenceToWiFi(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="beforeMethod" is-config="true" duration-ms="19493" started-at="2019-10-09T16:58:18Z" finished-at="2019-10-09T16:58:38Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void practice.testscript.AdvanceTest.testNavigatePreferenceToWiFi(java.lang.String,java.lang.String,java.lang.String)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="testNavigatePreferenceToWiFi(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="testNavigatePreferenceToWiFi" duration-ms="8489" started-at="2019-10-09T16:58:38Z" data-provider="testNavigatePreferenceToWiFi" finished-at="2019-10-09T16:58:46Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Verify WiFi setting navigation functionality and enter 'Test Data 2']]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Low]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Test Data 2]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNavigatePreferenceToWiFi -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="afterMethod" is-config="true" duration-ms="1040" started-at="2019-10-09T16:58:46Z" finished-at="2019-10-09T16:58:47Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testNavigatePreferenceToWiFi status=SUCCESS method=AdvanceTest.testNavigatePreferenceToWiFi(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="beforeMethod" is-config="true" duration-ms="19989" started-at="2019-10-09T16:58:47Z" finished-at="2019-10-09T16:59:07Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void practice.testscript.AdvanceTest.testNavigatePreferenceToWiFi(java.lang.String,java.lang.String,java.lang.String)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="testNavigatePreferenceToWiFi(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="testNavigatePreferenceToWiFi" duration-ms="8357" started-at="2019-10-09T16:59:07Z" data-provider="testNavigatePreferenceToWiFi" finished-at="2019-10-09T16:59:15Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Verify WiFi setting navigation functionality and enter 'Test Data 3']]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Low]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Test Data 3]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNavigatePreferenceToWiFi -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="afterMethod" is-config="true" duration-ms="1132" started-at="2019-10-09T16:59:15Z" finished-at="2019-10-09T16:59:17Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testNavigatePreferenceToWiFi status=SUCCESS method=AdvanceTest.testNavigatePreferenceToWiFi(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="beforeMethod" is-config="true" duration-ms="21743" started-at="2019-10-09T16:59:17Z" finished-at="2019-10-09T16:59:38Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void practice.testscript.AdvanceTest.testNavigatePreferenceToWiFi(java.lang.String,java.lang.String,java.lang.String)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="testNavigatePreferenceToWiFi(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="testNavigatePreferenceToWiFi" duration-ms="7811" started-at="2019-10-09T16:59:38Z" data-provider="testNavigatePreferenceToWiFi" finished-at="2019-10-09T16:59:46Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Verify WiFi setting navigation functionality and enter 'Test Data 4']]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Low]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Test Data 4]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNavigatePreferenceToWiFi -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="afterMethod" is-config="true" duration-ms="1184" started-at="2019-10-09T16:59:46Z" finished-at="2019-10-09T16:59:47Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testNavigatePreferenceToWiFi status=SUCCESS method=AdvanceTest.testNavigatePreferenceToWiFi(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="beforeMethod(java.lang.reflect.Method)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="beforeMethod" is-config="true" duration-ms="20230" started-at="2019-10-09T16:59:47Z" finished-at="2019-10-09T17:00:08Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[public void practice.testscript.AdvanceTest.testNavigatePreferenceToWiFi(java.lang.String,java.lang.String,java.lang.String)]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- beforeMethod -->
+        <test-method status="PASS" signature="testNavigatePreferenceToWiFi(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="testNavigatePreferenceToWiFi" duration-ms="8907" started-at="2019-10-09T17:00:08Z" data-provider="testNavigatePreferenceToWiFi" finished-at="2019-10-09T17:00:16Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[Verify WiFi setting navigation functionality and enter 'Test Data 5']]>
+              </value>
+            </param>
+            <param index="1">
+              <value>
+                <![CDATA[Low]]>
+              </value>
+            </param>
+            <param index="2">
+              <value>
+                <![CDATA[Test Data 5]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- testNavigatePreferenceToWiFi -->
+        <test-method status="PASS" signature="afterMethod(org.testng.ITestResult)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="afterMethod" is-config="true" duration-ms="1076" started-at="2019-10-09T17:00:16Z" finished-at="2019-10-09T17:00:18Z">
+          <params>
+            <param index="0">
+              <value>
+                <![CDATA[[TestResult name=testNavigatePreferenceToWiFi status=SUCCESS method=AdvanceTest.testNavigatePreferenceToWiFi(java.lang.String, java.lang.String, java.lang.String)[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc] output={null}]]]>
+              </value>
+            </param>
+          </params>
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterMethod -->
+        <test-method status="PASS" signature="afterSuite()[pri:0, instance:practice.testscript.AdvanceTest@2b9627bc]" name="afterSuite" is-config="true" duration-ms="0" started-at="2019-10-09T17:00:18Z" finished-at="2019-10-09T17:00:18Z">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- afterSuite -->
+      </class> <!-- practice.testscript.AdvanceTest -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
