@@ -53,5 +53,16 @@ public class GeneralStorePage {
 		
 		TechnicalComponents.click(buttonLetsShop, "Lets Shop button");
 	}
+	
+	public void clearName(String name) {
+		
+		TechnicalComponents.waitTill(labelTitle, "visible");
+		TechnicalComponents.verifyTextAttribute(labelTitle, "contains", "General", "Title of Activity");
+		System.out.println("Equal operation perform");
+		TechnicalComponents.type(editName, name, "User's Name");
+		TechnicalComponents.hideKeyboard();
+		TechnicalComponents.tap(radioFemale, "Radio button Female");
+		TechnicalComponents.clear(editName, "Clear Field Value");
+	}
 		
 }

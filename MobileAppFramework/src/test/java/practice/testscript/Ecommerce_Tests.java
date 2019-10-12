@@ -7,6 +7,7 @@ import org.testng.annotations.Test;
 
 import config.FrameworkException;
 import config.Report;
+import objectrepository.GeneralStorePage;
 import reusablecomponents.BusinessComponents;
 
 public class Ecommerce_Tests extends BusinessComponents {
@@ -22,8 +23,36 @@ public class Ecommerce_Tests extends BusinessComponents {
 			try {
 				// Method Code starts
 				
-				goToProductPage("Appium", "female", "India");
+				goToProductPage("Appium", "female", "Albania");
 				
+				// Method Code ends
+
+				Report.pass(testDesc + " Passed.", driver);
+				assertTrue(true, "Test Case: " + testDesc + " Passed.");
+			} catch (FrameworkException fx) {
+				Report.failLog(fx.getMessage());
+				Report.fail(testDesc + " Failed.", driver);
+				assertTrue(false, "Test Case: " + testDesc + " Failed.");
+			}
+		} else {
+			Report.skip("Test: " + testDesc + " Skipped.");
+			Report.skipLog("Test: " + testDesc + " Skipped.");
+			throw new SkipException("Test: " + testDesc);
+		}
+	}
+	
+	@Test
+	public void testVariousscenarios() {
+		testDesc = "Clear text field";
+		complexity = "Medium";
+		setParametersPerTestCase(testDesc, complexity);
+		
+		if (toBeTested) {
+			try {
+				// Method Code starts
+				GeneralStorePage store = new GeneralStorePage(driver);
+				store.clearName("Shailendra");
+				hardWait(10);
 				// Method Code ends
 				
 				Report.pass(testDesc + " Passed.");

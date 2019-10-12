@@ -4,22 +4,33 @@ import static io.appium.java_client.touch.LongPressOptions.longPressOptions;
 import static io.appium.java_client.touch.TapOptions.tapOptions;
 import static io.appium.java_client.touch.offset.ElementOption.element;
 import static java.time.Duration.ofSeconds;
+
+import java.io.File;
+
+import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.OutputType;
 import org.openqa.selenium.StaleElementReferenceException;
+import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.TimeoutException;
-import org.openqa.selenium.WebElement;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import config.FrameworkException;
 import config.Report;
 import config.TestSetup;
 import io.appium.java_client.TouchAction;
+import io.appium.java_client.android.AndroidDriver;
+import io.appium.java_client.android.AndroidElement;
 import io.appium.java_client.android.nativekey.AndroidKey;
 import io.appium.java_client.android.nativekey.KeyEvent;
 
 /************************************************
- *  Click, Scroll, HardWait, Tap, LongTap, Swipe, Drag and Drop, PressBackButton, Type
+ *  Method Completed....
+ *  Click, Scroll, HardWait, Tap, LongTap, Swipe, Drag and Drop, PressBackButton, Type , Clear
+ *  verifyAttribute, getAttribute, verifyTextAttribute, 
  *  
- *  ClearField, GetText, 
+ *  Pending.....
+ *   
  * 
  *************************************************/
 
@@ -42,8 +53,9 @@ public class TechnicalComponents extends TestSetup {
 	}
 	
 	/**
-	 * Function to hide keyboard.
-	 */	
+	 * Function to Hide keyboard on screen.
+	 * 
+	 */
 	public static void hideKeyboard() {
 		try {
 			driver.hideKeyboard();
@@ -58,16 +70,8 @@ public class TechnicalComponents extends TestSetup {
 	/**
 	 * Function to wait for any element to be visbile, invisible or enable.
 	 * 
-	 * @param element
-	 *            - Element to be looked for.
-	 * @param state
-	 *            - Expected state of Element. Expected values: "visible", "enable",
-	 *            "invisible"
-	 * @throws FrameworkException
-	 *             - in case of error.
-	 */
-	
-	public static void waitTill(WebElement element, String state) {
+	 */	
+	public static void waitTill(AndroidElement element, String state) {
 		try {
 			switch (state.toLowerCase()) {
 			case "visible":
@@ -138,7 +142,7 @@ public class TechnicalComponents extends TestSetup {
 	/**
 	 * Function to click on particular element.
 	 */	
-	public static void click(WebElement element, String desc) {
+	public static void click(AndroidElement element, String desc) {
 		try {
 
 			if (element.isDisplayed()) {
@@ -159,7 +163,7 @@ public class TechnicalComponents extends TestSetup {
 	/**
 	 * Function to Tap on particular element.
 	 */	
-	public static void tap(WebElement element, String desc) {
+	public static void tap(AndroidElement element, String desc) {
 		try {
 
 			TouchAction touch = new TouchAction(driver);
@@ -181,7 +185,7 @@ public class TechnicalComponents extends TestSetup {
 	/**
 	 * Function to Long Tap on particular element for mentioned Duration.
 	 */	
-	public static void longTap(WebElement element, int duration, String desc) {
+	public static void longTap(AndroidElement element, int duration, String desc) {
 		try {
 
 			TouchAction touch = new TouchAction(driver);
@@ -204,7 +208,7 @@ public class TechnicalComponents extends TestSetup {
 	/**
 	 * Function to swipe from point start to point End.
 	 */	
-	public static void swipe(WebElement startPoint, WebElement endPoint, String desc) {
+	public static void swipe(AndroidElement startPoint, AndroidElement endPoint, String desc) {
 		try {
 
 			TouchAction touch = new TouchAction(driver);
@@ -227,9 +231,9 @@ public class TechnicalComponents extends TestSetup {
 	/**
 	 * Function to Drag and Drop Element.
 	 */	
-	public static void dragAndDrop(WebElement dragElement, WebElement dropElement, String desc) {
+	public static void dragAndDrop(AndroidElement dragElement, AndroidElement dropElement, String desc) {
 		try {
-
+			
 			TouchAction touch = new TouchAction(driver);
 			if (dragElement.isDisplayed()) {
 				if (dragElement.isEnabled()) {
@@ -249,11 +253,11 @@ public class TechnicalComponents extends TestSetup {
 	/**
 	 * Function to frame Android UIAutomator Element from Attribute and Value.
 	 */	
-	public static WebElement getAndroidUIElement(String attribute, String value) {
+	public static AndroidElement getAndroidUIElement(String attribute, String value) {
 		try {
 			
 			String args = attribute + "(\"" + value + "\")";
-			WebElement androidElement = driver.findElementByAndroidUIAutomator(args);
+			AndroidElement androidElement = driver.findElementByAndroidUIAutomator(args);
 			Report.log("framed AndroidUIAutomator : " + androidElement.toString());
 			return androidElement;
 			
@@ -266,11 +270,12 @@ public class TechnicalComponents extends TestSetup {
 	/**
 	 * Function to send keys or type string in Element.
 	 */	
-	public static void type(WebElement element, String text, String desc) {
+	public static void type(AndroidElement element, String text, String desc) {
 		try {
 
 			if (element.isDisplayed()) {
 				if (element.isEnabled()) {
+					clear(element, desc);
 					element.sendKeys(text);
 					hideKeyboard();
 					Report.log(desc + " successfully typed: " + text);
@@ -285,4 +290,144 @@ public class TechnicalComponents extends TestSetup {
 		}
 	}
 
+	/**
+	 * Function to clear Edit text field.
+	 * 
+	 */
+	public static void clear(AndroidElement element, String desc) {
+		try {
+			
+			tap(element, desc);
+			element.clear();
+			Report.log("Element TEXT for" + element.toString() + " is Cleared");
+		
+		} catch (Exception e) {
+			throw new FrameworkException("Unknown exception encountered while clearing " + desc + "---" + e.getClass()
+					+ "---" + e.getMessage());
+		}
+	}
+	
+
+	/**
+	 * Function to verify all attributes like class,id,name except text of element.
+	 * 
+	 */
+	// verifyAttribute(element, className-equals,"Your Name","Name label value");
+	public static void verifyAttribute(AndroidElement element, String attributeDesc, String value, String desc) {
+		try {
+			
+			boolean result = false;
+			if (value != null) {
+				String attribute;
+				String matchType;
+				if (attributeDesc.split("-").length > 1) {
+					attribute = attributeDesc.split("-")[0];
+					matchType = attributeDesc.split("-")[1];
+					
+					switch (matchType.toLowerCase()) {
+					case "equals":
+							result = element.getAttribute(attribute).toLowerCase().trim().equals(value.toLowerCase().trim());
+						break;
+					case "contains":
+							result = element.getAttribute(attribute).toLowerCase().replace(" ", "")
+									.replaceAll("\u00a0", "").replaceAll("&nbsp", "").contains(value.toLowerCase()
+											.replace(" ", "").replaceAll("\u00a0", "").replaceAll("&nbsp", ""));
+						break;
+					default:
+						throw new FrameworkException("Attribute matching criteria not configured.");
+					}
+				} else {
+					attribute = attributeDesc;
+						result = element.getAttribute(attribute).toLowerCase().trim().replaceAll("\u00a0", "")
+								.replaceAll("&nbsp", "").equalsIgnoreCase(
+										value.toLowerCase().trim().replaceAll("\u00a0", "").replaceAll("&nbsp", ""));
+				}
+			
+				if (result) {
+					Report.pass(attribute.toUpperCase() + " matched for " + desc.toUpperCase() + " and is '" + value + "'");
+					Report.log("Element Attribute" +attribute.toUpperCase()+" for " +element.toString() + " is Matched");
+				} else {
+					throw new FrameworkException("Expected " + attribute.toUpperCase() + " for " + desc + " is: '"
+							+ value + "' Actual " + attribute.toUpperCase() + " is: --- text = '" + element.getText()
+							+ "' ---- attribute ='" + element.getAttribute(attribute) + "'");
+				}
+			} else {
+				throw new FrameworkException("Value to be matched of attribute can not be Null for: " + desc);
+			}
+		
+		} catch (Exception e) {
+			throw new FrameworkException("Unknown exception occured while verifying attribute for: " + desc + "---"
+					+ e.getClass() + "---" + e.getMessage());
+		}
+	}
+	
+	/**
+	 * Function to verify text of element.
+	 * verifyAttribute(element, "equals","Your Name","Name label value");
+	 */
+
+	public static void verifyTextAttribute(AndroidElement element, String matchType, String value, String desc) {
+		try {
+			
+			boolean result = false;
+			if (value != null) {
+				switch (matchType.toLowerCase()) {
+				case "equals":
+					result = element.getText().toLowerCase().trim().equals(value.toLowerCase().trim());
+					break;
+				case "contains":
+					result = element.getText().toLowerCase().replace(" ", "").contains(value.toLowerCase().replace(" ", ""));
+					break;
+				default:
+					throw new FrameworkException("Text matching criteria not properly configured.");
+				}
+
+				if (result) {
+					Report.pass("Element text matched " + matchType.toUpperCase() + " for " + desc.toUpperCase()
+							+ " and is '" + value + "'");
+					Report.log("Element text matched " + matchType.toUpperCase() + " for " + element.toString());
+				} else {
+					throw new FrameworkException("Expected Text for " + desc + " is: '" + value
+							+ "' but found Actual text is: --- text = '" + element.getText() + "'");
+				}
+			} else {
+				throw new FrameworkException(
+						"Exception occured due to value to be matched of attribute can not be Null for: " + desc);
+			}
+			
+		} catch (Exception e) {
+			throw new FrameworkException("Unknown exception occured while verifying text for: " + desc + "---"
+					+ e.getClass() + "---" + e.getMessage());
+		}
+	}
+
+	/**
+	 * Function to get Attribute values of element like text,class name,id.
+	 * 
+	 */
+	public static String getAttribute(AndroidElement element, String attribute, String desc) {
+		try {
+			
+			String value;
+			if (attribute.equals("text")) {
+				if (element.getText() != null) {
+					value = element.getText();
+				} else {
+					value = "";
+				}
+			} else {
+				if (element.getAttribute(attribute) != null) {
+					value = element.getAttribute(attribute);
+				} else {
+					value = "";
+				}
+			}
+			Report.log("Attribute " + attribute + " for " + desc + " returned " + value);
+			return value;
+		
+		} catch (Exception e) {
+			throw new FrameworkException("Unknown exception occured while retrieving Attribute: "
+					+ attribute.toUpperCase() + " value for " + desc + "---" + e.getClass() + "---" + e.getMessage());
+		}
+	}
 }
